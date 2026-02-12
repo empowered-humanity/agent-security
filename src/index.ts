@@ -23,7 +23,7 @@ import { formatAsJson } from './reporters/json.js';
 import { ALL_PATTERNS, getPatternStats, getPatternsByCategory } from './patterns/index.js';
 import type { Severity } from './patterns/types.js';
 
-const VERSION = '1.0.0';
+const VERSION = '1.1.0';
 
 program
   .name('te-agent-security')
