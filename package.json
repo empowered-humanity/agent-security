@@ -57,7 +57,10 @@
     "code-injection",
     "credential-detection",
     "sast",
-    "vulnerability-scanner"
+    "vulnerability-scanner",
+    "mcp",
+    "mcp-security",
+    "taint-analysis"
   ],
   "author": "Empowered Humanity <security@empoweredhumanity.ai>",
   "license": "MIT",

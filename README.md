@@ -105,6 +105,35 @@ if (findings.length > 0) {
 }
 ```
 
+## Intelligence Layers
+
+Beyond pattern matching, the scanner includes 4 intelligence layers that add depth to every finding:
+
+### Auto-Classification
+Every finding is classified as one of: `live_vulnerability`, `credential_exposure`, `test_payload`, `supply_chain_risk`, `architectural_weakness`, or `configuration_risk`.
+
+```bash
+te-agent-security scan ./my-agent --group classification
+```
+
+### Test File Severity Downgrade
+Findings in test/fixture/example/payload directories are automatically severity-downgraded (critical→high, high→medium) since they represent lower risk.
+
+### Taint Proximity Analysis
+For dangerous sinks (eval, exec, pickle), the scanner checks whether user input sources (input(), request, argv, LLM .invoke()) are within 10 lines. Direct taint escalates severity to critical.
+
+### Context Flow Tracing
+Detects when serialized conversation context (JSON.stringify of messages/history) flows to external API calls — a novel agent-specific attack surface.
+
+```javascript
+// Each finding includes intelligence data:
+finding.classification    // 'live_vulnerability' | 'test_payload' | ...
+finding.isTestFile        // true if in test/fixture/example directory
+finding.taintProximity    // 'direct' | 'nearby' | 'distant'
+finding.contextFlowChain  // serialization → external call chain
+finding.severityDowngraded // true if test file downgrade applied
+```
+
 ## CI/CD Integration
 
 ### GitHub Actions
