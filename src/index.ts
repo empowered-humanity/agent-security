@@ -39,7 +39,7 @@ program
   .option('-o, --output <file>', 'Output file path')
   .option('--format <format>', 'Output format (console, json)', 'console')
   .option('--context', 'Show code context for findings')
-  .option('--group <by>', 'Group findings by (severity, file, category)', 'severity')
+  .option('--group <by>', 'Group findings by (severity, file, category, classification)', 'severity')
   .option('-v, --verbose', 'Verbose output')
   .option('-q, --quiet', 'Quiet mode - only show errors')
   .action(async (path, options) => {

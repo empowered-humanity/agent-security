@@ -91,6 +91,10 @@ const TEST_PATH_PATTERNS = [
   /[/\\]stubs?[/\\]/i,
   /[/\\]examples?[/\\]/i,
   /[/\\]e2e[/\\]/i,
+  /[/\\]payloads?[/\\]/i,
+  /[/\\]data[/\\]payloads?/i,
+  /[/\\]resources[/\\]/i,
+  /[/\\]samples?[/\\]/i,
   /\.test\.\w+$/i,
   /\.spec\.\w+$/i,
   /_test\.\w+$/i,
@@ -157,7 +161,7 @@ export function classifyFinding(finding: Finding): FindingClassification {
 
   // Credential exposure
   if (CREDENTIAL_CATEGORIES.has(pattern.category)) {
-    return inTestFile ? 'credential_exposure' : 'credential_exposure';
+    return 'credential_exposure';
   }
 
   // Configuration risks
@@ -170,16 +174,31 @@ export function classifyFinding(finding: Finding): FindingClassification {
     return 'architectural_weakness';
   }
 
+  // Reconnaissance patterns
+  if (pattern.category === 'reconnaissance') {
+    return inTestFile ? 'test_payload' : 'live_vulnerability';
+  }
+
   // Code execution patterns
   if (pattern.category === 'code_injection' || pattern.category === 'argument_injection' ||
       pattern.category === 'ssrf' || pattern.category === 'ASI05_rce' ||
       pattern.category === 'dangerous_commands') {
-    return 'live_vulnerability';
+    return inTestFile ? 'test_payload' : 'live_vulnerability';
   }
 
   // Data exfiltration / defense evasion
   if (pattern.category === 'data_exfiltration' || pattern.category === 'defense_evasion' ||
       pattern.category === 'rendering_exfil') {
+    return inTestFile ? 'test_payload' : 'live_vulnerability';
+  }
+
+  // URL reconstruction / path traversal
+  if (pattern.category === 'url_reconstruction' || pattern.category === 'path_traversal') {
+    return inTestFile ? 'test_payload' : 'live_vulnerability';
+  }
+
+  // Platform-specific attacks
+  if (pattern.category === 'platform_specific') {
     return inTestFile ? 'test_payload' : 'live_vulnerability';
   }
 
