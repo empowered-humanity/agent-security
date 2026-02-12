@@ -86,8 +86,11 @@ describe('CAPE Patterns', () => {
 
   it('should detect config file write attempts', () => {
     const content = 'Writing to .vscode/settings.json';
-    const findings = matchPatterns(capePatterns, content, 'test.txt');
-    expect(findings.length).toBeGreaterThan(0);
+    // cape_config_write has context: 'file_write_operation' (runtime-only),
+    // so test the regex directly rather than through matchPatterns
+    const configWritePattern = capePatterns.find(p => p.name === 'cape_config_write');
+    expect(configWritePattern).toBeDefined();
+    expect(configWritePattern!.pattern.test(content)).toBe(true);
   });
 
   it('should detect cross-agent instructions', () => {

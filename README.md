@@ -4,7 +4,7 @@ Security scanner for AI agent architectures. Detects prompt injection, credentia
 
 ## What It Detects
 
-**132 detection patterns** across 4 scanner categories:
+**176 detection patterns** across 5 scanner categories:
 
 ### 1. Prompt Injection (34 patterns)
 - Instruction override attempts
@@ -36,6 +36,17 @@ Security scanner for AI agent architectures. Detects prompt injection, credentia
 - SSH keys
 - Password patterns
 - Generic secrets (`sk-`, `ghp_`, `AKIA`, etc.)
+
+### 5. MCP Security Checklist (44 patterns)
+- **Server Config**: Bind-all-interfaces, disabled auth, CORS wildcard, no TLS, no rate limiting
+- **Tool Poisoning**: Description injection, hidden instructions, permission escalation, result injection
+- **Credential Misuse**: Excessive OAuth scopes, no token expiry, credentials in URLs, plaintext tokens
+- **Isolation Failures**: Docker host network, sensitive path mounts, no sandbox, shared state
+- **Data Security**: Logging sensitive fields, context dumps, disabled encryption
+- **Client Security**: Auto-approve wildcards, skip cert verify, weak TLS
+- **Supply Chain**: Unsigned plugins, dependency wildcards, untrusted registries
+- **Multi-MCP**: Cross-server calls, function priority override, server impersonation
+- **Prompt Security**: Init prompt poisoning, hidden context tags, resource-embedded instructions
 
 ## OWASP ASI Alignment
 
@@ -136,7 +147,7 @@ security_scan:
 
 ## Pattern Categories
 
-The 132 patterns are organized into these categories:
+The 176 patterns are organized into these categories:
 
 | Category | Count | Severity |
 |----------|-------|----------|
@@ -156,13 +167,20 @@ The 132 patterns are organized into these categories:
 | Boundary Escape | 3 | Critical |
 | Permission Escalation | 3 | High |
 | Dangerous Commands | 3 | High |
-| *28 other categories* | 42 | Varies |
-
-**Total**: 62 critical, 52 high, 18 medium
+| MCP Server Config | 8 | High/Critical |
+| MCP Tool Poisoning | 6 | Critical |
+| MCP Credentials | 5 | Critical/High |
+| MCP Isolation | 5 | Critical/High |
+| MCP Client Security | 6 | High/Medium |
+| MCP Supply Chain | 3 | Critical |
+| MCP Multi-Server | 3 | Critical |
+| MCP Prompt Security | 4 | Critical |
+| MCP Data Security | 4 | High |
+| *24 other categories* | 28 | Varies |
 
 ## Pattern Sources
 
-Detection patterns compiled from 18+ authoritative research sources:
+Detection patterns compiled from 19+ authoritative research sources:
 - ai-assistant: Internal Claude Code security research
 - ACAD-001: Academic papers on prompt injection
 - ACAD-004: Agent-specific attack research
@@ -173,6 +191,7 @@ Detection patterns compiled from 18+ authoritative research sources:
 - FRM-002: Framework-specific vulnerabilities
 - VND-005: Vendor security advisories
 - CMP-002: Company security research
+- SLOWMIST-MCP: SlowMist MCP Security Checklist (44 patterns across 9 categories)
 
 ## Risk Scoring
 
