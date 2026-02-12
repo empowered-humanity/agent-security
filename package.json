@@ -1,0 +1,88 @@
+{
+  "name": "@empowered-humanity/agent-security",
+  "version": "1.0.0",
+  "description": "Security scanner for AI agent architectures - 176 detection patterns for prompt injection, credential exposure, MCP security, and OWASP ASI vulnerabilities",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./patterns": {
+      "types": "./dist/patterns/index.d.ts",
+      "default": "./dist/patterns/index.js"
+    },
+    "./scanner": {
+      "types": "./dist/scanner/index.d.ts",
+      "default": "./dist/scanner/index.js"
+    },
+    "./reporters": {
+      "types": "./dist/reporters/index.d.ts",
+      "default": "./dist/reporters/index.js"
+    }
+  },
+  "bin": {
+    "te-agent-security": "dist/index.js",
+    "te-as": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "SECURITY.md",
+    "sbom.json"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/",
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run clean && npm run build && npm test"
+  },
+  "keywords": [
+    "security",
+    "ai-agent",
+    "prompt-injection",
+    "scanner",
+    "llm",
+    "owasp",
+    "asi",
+    "agent-security",
+    "code-injection",
+    "credential-detection",
+    "sast",
+    "vulnerability-scanner"
+  ],
+  "author": "Empowered Humanity <security@empoweredhumanity.ai>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/empowered-humanity/agent-security.git"
+  },
+  "bugs": {
+    "url": "https://github.com/empowered-humanity/agent-security/issues"
+  },
+  "homepage": "https://github.com/empowered-humanity/agent-security#readme",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^12.0.0",
+    "glob": "^10.3.0",
+    "ora": "^8.0.0",
+    "yaml": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "rimraf": "^5.0.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
