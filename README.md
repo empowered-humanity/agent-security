@@ -1,5 +1,12 @@
 # Agent Security Scanner
 
+[![CI](https://github.com/empowered-humanity/agent-security/actions/workflows/ci.yml/badge.svg)](https://github.com/empowered-humanity/agent-security/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/@empowered-humanity/agent-security)](https://www.npmjs.com/package/@empowered-humanity/agent-security)
+[![License: MIT](https://img.shields.io/badge/License-MIT-gold.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Strict-blue.svg)](https://www.typescriptlang.org/)
+[![Tests](https://img.shields.io/badge/Tests-116%20passing-brightgreen.svg)]()
+[![Patterns](https://img.shields.io/badge/Patterns-176-navy.svg)]()
+
 Security scanner for AI agent architectures. Detects prompt injection, credential exposure, code injection, and agent-specific attack patterns.
 
 ## What It Detects

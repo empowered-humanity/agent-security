@@ -1,107 +1,85 @@
 {
-  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
-  "specVersion": "1.6",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:a2adc748-b6b0-48b3-8130-7aa8fffae10c",
   "version": 1,
-  "serialNumber": "urn:uuid:3acedb58-5bfd-4dd9-8fd8-f8c1e634fc57",
   "metadata": {
-    "timestamp": "2026-02-11T22:01:04.519Z",
-    "tools": {
-      "components": [
-        {
-          "type": "application",
-          "name": "npm",
-          "version": "11.6.2"
-        },
-        {
-          "type": "application",
-          "name": "cyclonedx-npm",
-          "group": "@cyclonedx",
-          "version": "4.1.2",
-          "author": "Jan Kowalleck",
-          "description": "Create CycloneDX Software Bill of Materials (SBOM) from NPM projects.",
-          "licenses": [
-            {
-              "license": {
-                "id": "Apache-2.0"
-              }
-            }
-          ],
-          "externalReferences": [
-            {
-              "url": "git+https://github.com/CycloneDX/cyclonedx-node-npm.git",
-              "type": "vcs",
-              "comment": "as detected from PackageJson property \"repository.url\""
-            },
-            {
-              "url": "https://github.com/CycloneDX/cyclonedx-node-npm#readme",
-              "type": "website",
-              "comment": "as detected from PackageJson property \"homepage\""
-            },
-            {
-              "url": "https://github.com/CycloneDX/cyclonedx-node-npm/issues",
-              "type": "issue-tracker",
-              "comment": "as detected from PackageJson property \"bugs.url\""
-            }
-          ]
-        },
-        {
-          "type": "library",
-          "name": "cyclonedx-library",
-          "group": "@cyclonedx",
-          "version": "9.4.1",
-          "author": "Jan Kowalleck",
-          "description": "Core functionality of CycloneDX for JavaScript (Node.js or WebBrowser).",
-          "licenses": [
-            {
-              "license": {
-                "id": "Apache-2.0"
-              }
-            }
-          ],
-          "externalReferences": [
-            {
-              "url": "git+https://github.com/CycloneDX/cyclonedx-javascript-library.git",
-              "type": "vcs",
-              "comment": "as detected from PackageJson property \"repository.url\""
-            },
-            {
-              "url": "https://github.com/CycloneDX/cyclonedx-javascript-library#readme",
-              "type": "website",
-              "comment": "as detected from PackageJson property \"homepage\""
-            },
-            {
-              "url": "https://github.com/CycloneDX/cyclonedx-javascript-library/issues",
-              "type": "issue-tracker",
-              "comment": "as detected from PackageJson property \"bugs.url\""
-            }
-          ]
-        }
-      ]
-    },
+    "timestamp": "2026-02-12T19:27:36.890Z",
+    "tools": [
+      {
+        "name": "agent-security-sbom-generator",
+        "version": "1.0.0"
+      }
+    ],
     "component": {
       "type": "application",
-      "name": "te-security",
-      "version": "0.1.0",
-      "bom-ref": "te-security@0.1.0",
-      "description": "Security tools monorepo for TE Code ecosystem",
-      "purl": "pkg:npm/te-security@0.1.0",
-      "properties": [
+      "name": "@empowered-humanity/agent-security",
+      "version": "1.1.0",
+      "description": "Security scanner for AI agent architectures - 176 detection patterns for prompt injection, credential exposure, MCP security, and OWASP ASI vulnerabilities",
+      "licenses": [
         {
-          "name": "cdx:npm:package:private",
-          "value": "true"
-        },
-        {
-          "name": "cdx:npm:package:path",
-          "value": ""
+          "license": {
+            "id": "MIT"
+          }
         }
-      ]
+      ],
+      "purl": "pkg:npm/%40empowered-humanity/agent-security@1.1.0"
     }
   },
-  "components": [],
-  "dependencies": [
+  "components": [
     {
-      "ref": "te-security@0.1.0"
+      "type": "library",
+      "name": "chalk",
+      "version": "5.3.0",
+      "purl": "pkg:npm/chalk@5.3.0"
+    },
+    {
+      "type": "library",
+      "name": "commander",
+      "version": "12.0.0",
+      "purl": "pkg:npm/commander@12.0.0"
+    },
+    {
+      "type": "library",
+      "name": "glob",
+      "version": "10.3.0",
+      "purl": "pkg:npm/glob@10.3.0"
+    },
+    {
+      "type": "library",
+      "name": "ora",
+      "version": "8.0.0",
+      "purl": "pkg:npm/ora@8.0.0"
+    },
+    {
+      "type": "library",
+      "name": "yaml",
+      "version": "2.3.0",
+      "purl": "pkg:npm/yaml@2.3.0"
+    },
+    {
+      "type": "library",
+      "name": "@types/node",
+      "version": "20.10.0",
+      "purl": "pkg:npm/%40types/node@20.10.0"
+    },
+    {
+      "type": "library",
+      "name": "rimraf",
+      "version": "5.0.0",
+      "purl": "pkg:npm/rimraf@5.0.0"
+    },
+    {
+      "type": "library",
+      "name": "typescript",
+      "version": "5.3.0",
+      "purl": "pkg:npm/typescript@5.3.0"
+    },
+    {
+      "type": "library",
+      "name": "vitest",
+      "version": "1.0.0",
+      "purl": "pkg:npm/vitest@1.0.0"
     }
   ]
 }

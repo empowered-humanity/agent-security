@@ -43,7 +43,8 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint src/",
     "clean": "rimraf dist",
-    "prepublishOnly": "npm run clean && npm run build && npm test"
+    "prepublishOnly": "npm run clean && npm run build && npm test",
+    "sbom": "node generate-sbom.js"
   },
   "keywords": [
     "security",
